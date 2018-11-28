@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <span>{% block title %} Upcoming Matches {% endblock %}</span>
+  {% if g.user['role'] == 'admin' %}
+    <a id="addTeam" href="{{ url_for('/.add_match') }}">Add Match</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <div class="upcoming-matches">
+        {% for match in matches %}
+        <div class="upcoming-match-wrapper {{ loop.cycle('upcoming-match-odd', 'upcoming-match-even') }}">
+            <table class="upcoming-match">
+                <tr>
+                    <td class="team {{ 'prediction-active' if not match['match']['winner']  }}">
+                        <label class="prediction-input">
+                            <input type="radio" name="{{ match['match']['id'] }}" value="{{ match['match']['team_a']}}" {% if match['match']['winner'] %}disabled {% endif %} />
+                            <img class="team-logo" src="{{ url_for('static', filename=match['team_a_logo']) }}">
+                        </label>
+                    </td>
+                    <td class="upcoming-match-versus">
+                        <span class="upcoming-match-score">{{ match['match']['team_a_score'] }} : {{ match['match']['team_b_score'] }}</span>
+                        <br>
+                        <span class="upcoming-match-rounds">Bo{{ match['match']['rounds'] }}</span>
+                    </td>
+                    <td class="team {{ 'prediction-active' if not match['match']['winner']  }}">
+                        <label class="prediction-input">
+                            <input type="radio" name="{{ match['match']['id'] }}" value="{{ match['match']['team_b']}}" {% if match['match']['winner'] %}disabled {% endif %} />
+                            <img class="team-logo" src="{{url_for('static', filename='img/logos/logo_default.png')}}"
+                                 srcset="{{ url_for('static', filename=match['team_b_logo']) }}">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>{{ match['match']['team_a'] }}</span>
+                        {% if match['match']['winner'] == match['match']['team_a'] %}
+                            <span class="match-entry-winner">winner</span>
+                        {% endif %}
+                        <br>
+                        <span class="upcoming-match-details">{{ match['match']['tournament'] }}</span>
+                    </td>
+                    <td></td>
+                    <td>
+                        <span>{{ match['match']['team_b'] }}</span>
+                        {% if match['match']['winner'] == match['match']['team_b'] %}
+                            <span class="match-entry-winner">winner</span>
+                        {% endif %}
+                        <br>
+                        <span class="upcoming-match-details date">{{ match['match']['match_date'] }}</span>
+                    </td>
+                </tr>
+                  {% if g.user['role'] == 'admin' and not match['match']['winner'] %}
+                    <tr>
+                        <td><a class="update-match" href="{{ url_for('/.update_match', match_id = match['match']['id']) }}">Update Match</a></td>
+                    </tr>
+                  {% endif %}
+            </table>
+        </div>
+        {% endfor %}
+            <div class="submit-container">
+                <input class="clear-button" type="button" id="clear" value="Clear" />
+                <input class="submit-button" type="submit" id="submit" value="Submit" />
+            </div>
+        </div>
+    </form>
+{% endblock %}

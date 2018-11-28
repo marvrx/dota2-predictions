@@ -1,0 +1,62 @@
+<!doctype html>
+    <head>
+        <title>{% block title %}{% endblock %} - DPC Predictions</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+<nav class="navbar-BG">
+    <div class="navbar-container">
+        <div class="navbar-logo">
+            <a class="" href="">DPC <br/> Predictions</a>
+        </div>
+        <div class="navbar-item">
+            <a href="{{ url_for('/.index') }}">Upcoming Matches</a>
+        </div>
+        <div class="navbar-item">
+            <a href="{{ url_for('/.standings') }}">Season Standings</a>
+        </div>
+        <div class="navbar-login">
+        {% if g.user %}
+            <span class="navbar-user-name">{{ g.user['username'] }}</span>
+            <span class="navbar-user-points">({{session['user_points']}})</span>
+            <a class="navbar-logout" href="{{ url_for('auth.logout') }}">Log Out</a>
+        {% else %}
+            <a class="" href="{{ url_for('auth.register') }}">Register</a>
+            <a class="navbar-logout" href="{{ url_for('auth.login') }}">Log In</a>
+        {% endif %}
+        </div>
+    </div>
+</nav>
+
+<div id="content-wrapper">
+    <header class="page-header">
+    {% block header %}{% endblock %}
+        <hr>
+    </header>
+    <div id="content">
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </div>
+</div>
+<div id="sidebar-leaderboard">
+    <span id="sidebar-title">Leaderboard</span>
+    <hr>
+    <table cellspacing="0">
+        <tr>
+            <th>#</th>
+            <th>User</th>
+            <th class="leaderboard-points">Points</th>
+        </tr>
+        {% for entry in leaderboard %}
+        <tr class="{{ loop.cycle('leaderboard-even', 'leaderboard-odd') }}">
+            <td class="leaderboard-rank"> {{ loop.index}}.</td>
+            <td>{{ entry['username']}}</td>
+            <td class="leaderboard-points">{{ entry['points'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<script src="{{ url_for('static', filename='matchTimer.js') }}"></script>

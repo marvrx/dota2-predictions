@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <span>{% block title %} Standings {% endblock %}</span>
+  {% if g.user['role'] == 'admin' %}
+    <a id="addTeam" href="{{ url_for('/.add_team') }}">Add Team</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+    <table class="ranking" cellspacing="0">
+        <thead class="ranking-header">
+          <th>Rank</th>
+          <th></th>
+          <th class="ranking-header-team">Team</th>
+          <th>Earnings</th>
+          <th>Roster</th>
+          <th>Points</th>
+        </thead>
+        <tbody>
+
+        {% for org in orgs %}
+        <tr class="ranking-entry {{ loop.cycle('odd', 'even') }}">
+            <td class="ranking-entry-rank">{{ loop.index }}</td>
+            <td class="ranking-entry-logo"><img src="{{ url_for('static', filename=org['team']['logo_path']) }}" /></td>
+            <td class="ranking-entry-name">{{ org['team']['name'] }}</td>
+            <td class="ranking-entry-earnings"> {{ org['team']['earnings']}}$</td>
+            <td class="ranking-entry-roster">
+                {% for player in org['roster'] %}
+                <span> {{ player['nickname'] }}</span>
+                <br />
+                {% endfor %}
+            </td>
+            <td class="ranking-entry-points">{{ org['team']['points']}}
+            {% if g.user['role'] == 'admin' %}
+                <a class="action" href="{{ url_for('/.update_team', team_name = org['team']['name']) }}">Edit</a>
+            {% endif %}
+            </td>
+        </tr>
+        {% if not loop.last %}
+        {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

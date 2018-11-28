@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit "{{ team['name'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form class ="updateForm" method="post">
+
+    <label for="name">Name:</label>
+    <input name="name" id="name" value="{{ request.form['name'] or team['name'] }}" required>
+    <hr>
+    <label for="points">Points:</label>
+    <input name="points" id="points" value="{{ request.form['points'] or team['points'] }}">
+    <hr>
+    <label for="region">Region:</label>
+    <input name="region" id="region" value="{{ request.form['region'] or team['region'] }}" required>
+    <hr>
+    <label for="region">Earnings:</label>
+    <input name="earnings" id="earnings" value="{{ request.form['earnings'] or team['earnings'] }}" required>
+    <hr>
+    <input  class="saveAction" type="submit" value="Save">
+  </form>
+  <form action="{{ url_for('/.remove_team', team_name=team['name']) }}" method="post">
+    <input class="deleteAction" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+  </form>
+{% endblock %}

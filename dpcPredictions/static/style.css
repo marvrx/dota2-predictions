@@ -1,0 +1,445 @@
+html { font-family: 'Roboto'; background: #eee; }
+body { margin: 0;}
+
+
+a { color: white; }
+li { color: white; }
+hr {
+    border: none;
+    border-top: 1px solid lightgray;
+}
+
+/* NAVBAR */
+.navbar-BG {
+    top: 0;
+    width:100%;
+	height:68px;
+	z-index: 10001;
+	background-color: #212121;
+    margin-bottom: 20px;
+}
+.navbar-container {
+	width: 938px;
+	height: 69px;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.navbar-logo {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 16pt;
+    width: 150px;
+    height: 100%;
+    transform: translateY(10%);
+}
+
+.navbar-logo a:hover, a:link, a:active, a:visited {
+    text-decoration: none;
+}
+
+.navbar-item {
+    position: relative;
+    display: inline-block;
+    margin: auto 15px;
+    vertical-align: middle;
+    color: #ffffff;
+}
+
+.navbar-item a {
+    text-decoration: none;
+	font-size:14px;
+	color: #ffffff;
+}
+
+.navbar-item a:hover {
+    color: #fafafa;
+}
+
+.navbar-item a:link, a:active, a:visited {
+    text-decoration: none;
+    color:#fafafa;
+}
+
+.navbar-login {
+    color: #ffffff;
+    text-align: right;
+	font-size:16px;
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-75%);
+}
+
+.navbar-user-name {
+    font-size: 18px;
+}
+
+.navbar-user-points {
+    font-size: 12px;
+}
+
+.navbar-login a {
+    margin-left: 15px;
+    font-size: 12px;
+}
+
+#content-wrapper {
+    text-align: center;
+    float: left;
+    width: 75%;
+}
+
+#content {
+    float: right;
+    padding: 0px 1rem 1rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    background-color: white;
+}
+
+/* Sidebar */
+#sidebar-leaderboard {
+    background-color: white;
+    float: right;
+
+    width: 200px;
+    border: 2px solid #212121;
+    margin-right: 50px;
+    padding: 15px 15px 0 15px;
+    height: 450px;
+}
+
+#sidebar-title {
+    font-weight: bold;
+    font-size: 14pt;
+
+    margin-left: 10px;
+}
+
+#sidebar-leaderboard table {
+    text-align: left;
+    width: 100%;
+}
+
+#sidebar-leaderboard th {
+    border-bottom: 1px solid black;
+}
+
+.leaderboard-points {
+    text-align: right;
+}
+
+.leaderboard-rank {
+    font-weight: bold;
+}
+
+.leaderboard-odd {
+    background-color: #FAFAFB;
+    color: black;
+}
+
+.leaderboard-even {
+    background-color: #dee2e6;
+    color: black;
+}
+
+/* CONTENT (general stylings) */
+.flash {
+    margin: 1em auto 0 auto;
+    max-width: 800px;
+    padding: 1em;
+    background: #ff6666;
+    border: 1px solid darkred;
+}
+
+/* STANDINGS */
+
+.page-header {
+    font-size: 30px;
+    font-weight: bold;
+
+    text-align: left;
+
+    float: right;
+    padding: 25px 1rem 1rem;
+    width: 100%;
+    max-width: 1000px;
+
+    background-color: white;
+}
+
+#addTeam {
+    color: darkred;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 2rem;
+}
+
+a.action {
+    color: darkred;
+    float: right;
+    padding-right: 10px;
+}
+
+a.action:visited, a.action:active {
+    text-decoration: none;
+}
+
+.ranking {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto auto;
+}
+
+.ranking-header th{
+    color: white;
+    height: 36px;
+    background-color: #333;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.ranking-header-team {
+
+}
+
+.ranking-entry {
+    height: 80px;
+}
+
+.ranking-entry td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+.ranking-entry-rank {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+}
+
+.ranking-entry-logo {
+    max-width: 20px;
+}
+
+.ranking-entry img {
+    width: 50px;
+    float: right;
+}
+
+.ranking-entry-name {
+    padding-left: 10px;
+    max-width: 300px;
+}
+
+.ranking-entry-earnings {
+    width: 150px;
+    padding-left: 10px;
+}
+
+.ranking-entry-roster {
+    font-weight: normal;
+    padding-left: 10px;
+    width: 200px;
+}
+
+.ranking-entry-roster span {
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.ranking-entry-points {
+    width: 80px;
+    text-align: center;
+}
+
+.even {
+    color: #232323;
+    background-color: #dee2e6;;
+}
+
+.odd {
+    background-color: white;
+}
+
+/* UPDATE TEAM */
+.updateForm {
+    max-width: 500px;
+}
+
+.updateForm label {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.updateForm input {
+    display: inline-block;
+    float: right;
+    height: 100%;
+}
+
+.updateForm hr {
+    clear: both;
+    visibility: hidden;
+}
+
+/* UPDATE MATCH*/
+.update-match {
+    color: red;
+}
+
+
+.saveAction {
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.deleteAction {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 10px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* UPCOMING MATCHES */
+
+.upcoming-matches {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: auto;
+}
+
+td.prediction-active:hover {
+    background-color: #B7E874;
+}
+
+.team-logo{
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.upcoming-match-wrapper {
+    float: left;
+
+    width: 48%;
+    height: 310px;
+
+    background-color: #FAFAFB;
+    border: 3px solid #181C28;
+
+    margin: 15px 0 15px 0;
+}
+
+table.upcoming-match {
+    min-height: 210px;
+}
+
+.upcoming-match {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0 15px 0;
+    margin: 33px 0 33px;
+
+}
+
+.upcoming-match-score {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.upcoming-match-rounds {
+    font-size: 12px;
+}
+
+.upcoming-match-versus {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.upcoming-match-details {
+    font-size: 11px;
+}
+
+.upcoming-match-odd {
+    margin-right: 1%;
+}
+
+.upcoming-match-even {
+    margin-left: 1%;
+}
+
+.match-entry-winner {
+    color: white;
+    font-weight: lighter;
+    font-size: 10pt;
+    padding: 2px 2px 2px 2px;
+    background-color: #1a9b06;
+}
+
+td label.prediction-input > input {
+    /* Hide radio button*/
+    visibility: hidden;
+    position: absolute;
+}
+
+td label.prediction-input > input + img {
+    cursor: pointer;
+}
+
+td label.prediction-input > input:checked + img {
+    background-color: #B7E874;
+}
+
+.submit-container {
+    width: 100%;
+}
+
+.submit-button {
+    display: inline-block;
+    background-color: #A7191E;
+	position: relative;
+	padding: .8em 1.4em;
+	border: none;
+	color: white;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.clear-button {
+    display: inline-block;
+    background-color: #A7191E;
+	position: relative;
+	padding: .8em 1.4em;
+	border: none;
+	color: white;
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+

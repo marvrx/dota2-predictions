@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.11">
+    <root id="1">
+      <ServerVersion>3.20.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="match"/>
+    <table id="7" parent="2" name="player"/>
+    <table id="8" parent="2" name="predictions"/>
+    <table id="9" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="10" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <table id="11" parent="2" name="team"/>
+    <table id="12" parent="2" name="tournament"/>
+    <table id="13" parent="2" name="tournament_status"/>
+    <table id="14" parent="2" name="user"/>
+    <column id="15" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="6" name="team_a">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="17" parent="6" name="team_b">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="18" parent="6" name="team_a_score">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="19" parent="6" name="team_b_score">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="20" parent="6" name="tournament">
+      <Position>6</Position>
+      <DataType>INTEGER|0s</DataType>
+    </column>
+    <column id="21" parent="6" name="rounds">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="22" parent="6" name="match_date">
+      <Position>8</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="23" parent="6" name="winner">
+      <Position>9</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <key id="24" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="25" parent="6" name="match_team_a_name_fk">
+      <ColNames>team_a</ColNames>
+      <RefTableName>team</RefTableName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <foreign-key id="26" parent="6" name="match_team_b_name_fk">
+      <ColNames>team_b</ColNames>
+      <RefTableName>team</RefTableName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="27" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="7" name="nickname">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="7" name="firstname">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="7" name="lastname">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="7" name="position">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="32" parent="7" name="team">
+      <Position>6</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="33" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="7">
+      <ColNames>team</ColNames>
+      <RefTableName>team</RefTableName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="35" parent="8" name="user_id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="8" name="match_id">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="37" parent="8" name="prediction">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <foreign-key id="38" parent="8" name="predictions_player_id_fk">
+      <ColNames>user_id</ColNames>
+      <RefTableName>player</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="39" parent="8" name="predictions_match_id_fk">
+      <ColNames>match_id</ColNames>
+      <RefTableName>match</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="40" parent="8" name="predictions_team_name_fk">
+      <ColNames>prediction</ColNames>
+      <RefTableName>team</RefTableName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="41" parent="9" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="42" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="43" parent="9" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="44" parent="9" name="rootpage">
+      <Position>4</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <column id="45" parent="9" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="46" parent="10" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="47" parent="10" name="seq">
+      <Position>2</Position>
+    </column>
+    <column id="48" parent="11" name="name">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="11" name="points">
+      <Position>2</Position>
+      <DataType>INTEGER|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="11" name="region">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="51" parent="11" name="earnings">
+      <Position>4</Position>
+      <DataType>DOUBLE|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="52" parent="11" name="logo_path">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <index id="53" parent="11" name="sqlite_autoindex_team_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>name</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="11">
+      <ColNames>name</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_team_1</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="status">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="58" parent="12" name="prize_pool">
+      <Position>4</Position>
+      <DataType>INTEGER|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <column id="59" parent="12" name="organizer">
+      <Position>5</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="60" parent="12" name="dpc_points">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="61" parent="12" name="city">
+      <Position>7</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="62" parent="12" name="country">
+      <Position>8</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <key id="63" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="64" parent="12" name="tournament_tournament_status_type_fk">
+      <ColNames>status</ColNames>
+      <RefTableName>tournament_status</RefTableName>
+      <RefColNames>type</RefColNames>
+    </foreign-key>
+    <column id="65" parent="13" name="type">
+      <Position>1</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="66" parent="13" name="sqlite_autoindex_tournament_status_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>type</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="67" parent="13" name="tournament_status_type_uindex">
+      <ColNames>type</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="68" parent="13">
+      <ColNames>type</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>sqlite_autoindex_tournament_status_1</UnderlyingIndexName>
+    </key>
+    <column id="69" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="70" parent="14" name="username">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="14" name="password">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="14" name="role">
+      <Position>4</Position>
+      <DataType>TEXT|0s</DataType>
+      <DefaultExpression>user</DefaultExpression>
+    </column>
+    <column id="73" parent="14" name="points">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="74" parent="14" name="sqlite_autoindex_user_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="75" parent="14">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="76" parent="14">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_user_1</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

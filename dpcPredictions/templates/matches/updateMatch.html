@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Match with ID: "{{ match['id'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form class ="updateForm" method="post">
+    <span>Team A: {{match['team_a']}}</span>
+    <hr>
+    <label for="team_a_score">Team A Score:</label>
+    <input name="team_a_score" id="team_a_score" value="{{ request.form['team_a_score'] or match['team_a_score'] }}" required>
+    <hr>
+    <span>Team B: {{match['team_b']}}</span>
+    <hr>
+    <label for="team_b_score">Team B Score:</label>
+    <input name="team_b_score" id="team_b_score" value="{{ request.form['team_b_score'] or match['team_b_score'] }}" required>
+    <hr>
+    <label for="winner">Winner:</label>
+    <input name="winner" id="winner" value="{{ request.form['winner'] or match['winner'] }}" required>
+    <hr>
+    <input  class="saveAction" type="submit" value="Save">
+  </form>
+{% endblock %}

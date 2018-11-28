@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Match{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="team_a">Team A</label>
+    <input name="team_a" id="team_a" value="{{ request.form['team_a'] }}" required>
+    <label for="team_b">Team B</label>
+    <input name="team_b" id="team_b" value="{{ request.form['team_b'] }}" required>
+    <br>
+    <label for="tournament">Tournament</label>
+    <input name="tournament" id="tournament" value="{{ request.form['tournament'] }}" required>
+    <br>
+    <label for="rounds">Rounds</label>
+    <input name="rounds" id="rounds" value="{{ request.form['rounds'] }}" required>
+    <br>
+    <label for="match_date">Date</label>
+    <input name="match_date" id="match_date" value="{{ request.form['match_date'] }}" type="datetime-local" required>
+    <input type="hidden" name="timezone-offset" id="timezone-field">
+    <input type="submit" value="Save">
+  </form>
+<script src="{{ url_for('static', filename='addMatch.js') }}"></script>
+{% endblock %}

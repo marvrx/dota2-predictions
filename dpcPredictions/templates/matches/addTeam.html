@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Team{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="name">Name</label>
+    <input name="name" id="name" value="{{ request.form['name'] }}" required>
+    <label for="points">Points</label>
+    <input name="points" id="points" value="{{ request.form['points'] }}">
+    <label for="region">Region</label>
+    <input name="region" id="region" value="{{ request.form['region'] }}" required>
+    <label for="region">Earnings</label>
+    <input name="earnings" id="earnings" value="{{ request.form['earnings'] }}" required>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
